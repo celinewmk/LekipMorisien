@@ -22,18 +22,9 @@ col = len(data[0])//2
 middle_pixel = data[row,col]
 
 #output the pixels
-print("IMAGE PIXELS ARRAY HERE!\n")
-print(image_pixels)
-print("\n")
-print("MIDDLE PIXEL HERE!!!\n")
-print(middle_pixel)
-
-print("\n Hex value here! \n")
-print('%02x%02x%02x' %  tuple(middle_pixel) + "\n")
-
-print("\n")
-print("RGB PIXEL HERE!!!\n")
-print('%02x%02x%02x' % tuple(middle_pixel))
+print(image_pixels) #image pixels
+print(middle_pixel) #middle pixel in RGB
+print('%02x%02x%02x' % tuple(middle_pixel)) #middle pixel in Hex
 
 RGB = ",".join([str(value) for value in middle_pixel])
 response = requests.get("https://www.thecolorapi.com/id", params = {"rgb": RGB})
