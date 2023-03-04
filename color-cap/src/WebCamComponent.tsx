@@ -25,24 +25,26 @@ const WebCamComponent = () => {
             setPicture(imageTaken);
 
             const base64EncodedImage = imageTaken.replace(/^data:image\/(png|jpg|jpeg);base64,/, "").replaceAll("/", "-").replaceAll("+", "_");
+            const url = "https://n2c5bmex9j.execute-api.us-east-1.amazonaws.com/HackTheHill";
+            const body = { image: base64EncodedImage };
+
             try {
-                var config = {
+                let config = {
                     headers: {
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Origin': '*'
                     }
                 }
-                axios.post("http://localhost:5000/colorName", 
-                { image: base64EncodedImage }, config).then(response => {
-                    setExactColor(response.data[0]);
-                    setClosestColor(response.data[1]);
-                });
+                axios.post(url, body, config).then(response => {
+                        const { exact, next_closest } = JSON.parse(response.data.body);
+                        console.log(exact, next_closest);
+                        setExactColor(`Exact Color: ${exact}`);
+                        setClosestColor(`Closest Color: ${next_closest}`);
+                    });
             } catch (error) {
                 console.error(error);
             }
         }
-
-        
     }, [webcamRef]);
 
     const goBackToHome = () => {
