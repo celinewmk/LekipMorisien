@@ -1,0 +1,25 @@
+.header-container {
+    background-color: lavender;
+    text-align: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.webcam-container {
+    margin: 5%;
+}
+
+.welcome-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.welcome-btn {
+    background-color: lavender;
+    border: 1px solid transparent;
+    padding: 15px;
+    cursor: pointer;
+}
