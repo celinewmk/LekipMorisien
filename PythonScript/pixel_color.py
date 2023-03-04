@@ -8,11 +8,8 @@ import numpy as np
 
 #create image obj and open for reading
 
-<<<<<<< Updated upstream
 im = Image.open("C:\\Users\\kkiti\\OneDrive\\Documents\\LekipMorisien\\PythonScript\\3.jpg", 'r')
-=======
-im = Image.open("C:\\Users\\kkiti\\OneDrive\\Documents\\LekipMorisien\\PythonScript\\1.jpg", 'r')
->>>>>>> Stashed changes
+
 
 #extract pixels from the image into a list
 #starting left to right top to bottom
@@ -20,13 +17,7 @@ image_pixels = list(im.getdata())
 data = np.array(im)
 row = len(data)//2
 col = len(data[0])//2
-<<<<<<< Updated upstream
-print(data)
-mid = data[row,col]
-print(mid)
-=======
 
->>>>>>> Stashed changes
 #get the middle pixel of the matrix
 middle_pixel = image_pixels[row,col]
 
