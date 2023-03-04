@@ -1,37 +1,33 @@
-#function that accepts one pixel from the middle of an image and outputs its color
-
+#Function that accepts one pixel from the middle of an image and outputs its color
 
 # TODO this will be read from an image we take instead of reading locally
-# import image
 from PIL import Image #python image library
 import numpy as np
 import requests
 
-#create image obj and open for reading
+#Create image object and open for reading
+im = Image.open("PythonScript\\3.jpg", 'r')
 
-im = Image.open("C:\\Users\\selin\\Desktop\\colorcap\\LekipMorisien\\PythonScript\\4.jpeg", 'r')
-
-
-#extract pixels from the image into a list
-#starting left to right top to bottom
+#Extract pixels from the image into a list
+#Starting left to right top to bottom
 data = np.array(im)
 row = len(data)//2
 col = len(data[0])//2
 
-#get the middle pixel of the matrix
+#Get the middle pixel of the matrix
 middle_pixel = data[row,col]
 
 #output the pixels
 print(middle_pixel) #middle pixel in RGB
 print('%02x%02x%02x' % tuple(middle_pixel)) #middle pixel in Hex
 
-
+#mapping the pixel into a color
 RGB = ",".join([str(value) for value in middle_pixel])
 response = requests.get("https://www.thecolorapi.com/id", params = {"rgb": RGB})
-print(response.json()["name"]["value"])
+print("Exact color: " + response.json()["name"]["value"])
 
-
-def closest_color():
+#mapping the detailed color to a simpler color from a dictionary
+def closest_color(our_pixel):
 	color_dictionary = {
 	  "Black": [0,0,0],
 	  "Gray": [127, 127, 127],
@@ -55,16 +51,17 @@ def closest_color():
 	  "Light purple": [200, 191, 231],
 	}
 
-	colors = np.array(list(color_dictionary.values()))
-	color = middle_pixel
-	distances = np.sqrt(np.sum((colors-color)**2,axis=1))
-	index_of_smallest = np.where(distances==np.amin(distances))
-	smallest_distance = colors[index_of_smallest]
-
+	colors = np.array(list(color_dictionary.values())) # [[0,0,0], [127,127,...],...]
+	# returns 1 list  --> the distance from the pixel to all the colors [distance from our pixel to black, distance from our pixel to gray, ...]
+	distances = np.sqrt(np.sum((colors-our_pixel)**2,axis=1)) 
+	index_of_smallest = np.where(distances==np.amin(distances)) # then we just take the min of that array 
+	smallest_distance = index_of_smallest[0][0]
+	
 	message = "First closest color: "
-	print(message + str(list(color_dictionary.keys())[index_of_smallest[0][0]]))
+	combined_message = message + str(list(color_dictionary.keys())[smallest_distance])
+	return combined_message
 
 
-closest_color()
+print(closest_color(middle_pixel))
 
 
