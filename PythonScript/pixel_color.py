@@ -9,7 +9,7 @@ import requests
 
 #create image obj and open for reading
 
-im = Image.open("C:\\Users\\kkiti\\OneDrive\\Documents\\LekipMorisien\\PythonScript\\3.jpg", 'r')
+im = Image.open("PythonScript\\4.jpeg", 'r')
 
 #extract pixels from the image into a list
 #starting left to right top to bottom
@@ -19,7 +19,7 @@ row = len(data)//2
 col = len(data[0])//2
 
 #get the middle pixel of the matrix
-middle_pixel = image_pixels[row,col]
+middle_pixel = data[row,col]
 
 #output the pixels
 print("IMAGE PIXELS ARRAY HERE!\n")
