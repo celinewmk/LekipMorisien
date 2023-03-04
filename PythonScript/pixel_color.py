@@ -4,18 +4,23 @@
 # TODO this will be read from an image we take instead of reading locally
 # import image
 from PIL import Image #python image library
-
+import numpy as np
 
 #create image obj and open for reading
 
-im = Image.open("C:\\Users\\kkiti\\OneDrive\\Documents\\LekipMorisien\\PythonScript\\2.jpg", 'r')
+im = Image.open("C:\\Users\\kkiti\\OneDrive\\Documents\\LekipMorisien\\PythonScript\\3.jpg", 'r')
 
 #extract pixels from the image into a list
 #starting left to right top to bottom
 image_pixels = list(im.getdata())
-
+data = np.array(im)
+row = len(data)//2
+col = len(data[0])//2
+print(data)
+mid = data[row,col]
+print(mid)
 #get the middle pixel of the matrix
-middle_pixel = image_pixels[len(image_pixels)//2]
+middle_pixel = image_pixels[row,col]
 
 #output the pixels
 print("IMAGE PIXELS ARRAY HERE!\n")
