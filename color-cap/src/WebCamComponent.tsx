@@ -8,6 +8,7 @@ const WebCamComponent = () => {
     const launchLabel = "GET STARTED!";
     const exitLabel = "GO BACK TO MAIN PAGE"
     const takePictureLabel = "TAKE SCREENSHOT"
+    const deleteLabel = "DELETE"
 
     const [openCamera, setOpenCamera] = useState<boolean>(false);
     const webcamRef = useRef<Webcam>(null);
@@ -19,18 +20,18 @@ const WebCamComponent = () => {
             setPicture(imageTaken);
 
             const base64EncodedImage = imageTaken.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
-
-            try {
-                axios({
-                    method: 'get',
-                    url: "https://vgssadiquawneydqm5nvaejw4i0rfjio.lambda-url.us-east-1.on.aws/",
-                }).then(response => {
-                    console.log(response.data);
-                });
+            console.log(base64EncodedImage)
+            // try {
+            //     axios({
+            //         method: 'get',
+            //         url: "https://vgssadiquawneydqm5nvaejw4i0rfjio.lambda-url.us-east-1.on.aws/",
+            //     }).then(response => {
+            //         console.log(response.data);
+            //     });
                
-            } catch (error) {
-                console.error(error);
-            }
+            // } catch (error) {
+            //     console.error(error);
+            // }
         }
 
         
@@ -70,7 +71,7 @@ const WebCamComponent = () => {
                     <img style={{padding: 10}} src={picture} alt="Screenshot" />
                     <div>
                         <button onClick={() => {setPicture(null)}}  className="btn">
-                            delete
+                            {deleteLabel}
                         </button>
                     </div>
                 </div>
