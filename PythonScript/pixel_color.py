@@ -27,10 +27,14 @@ print(image_pixels)
 print("\n")
 print("MIDDLE PIXEL HERE!!!\n")
 print(middle_pixel)
+
 print("\n Hex value here! \n")
 print('%02x%02x%02x' %  tuple(middle_pixel) + "\n")
+
+print("\n")
+print("RGB PIXEL HERE!!!\n")
+print('%02x%02x%02x' % tuple(middle_pixel))
 
 RGB = ",".join([str(value) for value in middle_pixel])
 response = requests.get("https://www.thecolorapi.com/id", params = {"rgb": RGB})
 print(response.json()["name"]["value"])
-
