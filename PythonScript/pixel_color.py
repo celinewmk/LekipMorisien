@@ -34,6 +34,8 @@ def closest_color(our_pixel):
 	  "Bordeaux": [136, 0, 21],
 	  "Red": [237, 28, 36],
 	  "Orange": [255, 127, 39],
+	  "Salmon": [233, 150, 122],
+	  "Brown": [139, 69, 19],
 	  "Yellow": [255, 242, 0],
 	  "Green": [34, 177, 76],
 	  "Blue": [203, 228, 253],
