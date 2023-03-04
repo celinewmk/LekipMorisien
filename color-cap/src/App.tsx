@@ -1,12 +1,15 @@
-import './App.css';
 import WebCamComponent from './WebCamComponent';
 
 function App() {
 
+  const appTitle = 'Color Cap';
+
   return (
-    <div>
-      <header className='header-container'>COLOR CAP</header>
-        <WebCamComponent />
+    <div style={{height: "100%"}}>
+      <header className='header-container'>
+        {appTitle.toUpperCase()}
+      </header>
+      <WebCamComponent />
     </div>
   );
 }

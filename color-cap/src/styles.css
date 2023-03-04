@@ -1,25 +1,58 @@
 .header-container {
-    background-color: lavender;
+    background-color: #557A95;
     text-align: center;
     padding-top: 1%;
     padding-bottom: 1%;
-    font-size: 28px;
+    font: 35px bold;
     margin-bottom: 10px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Courier New', Courier;
 }
 
-.webcam-container {
-    margin: 5%;
+.container {
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .welcome-btn-container {
+    margin: 5%;
+    height: 50%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.welcome-btn {
-    background-color: lavender;
+.webcam-container {
+    /* display: flex;
+    flex-direction: column; */
+    margin-top: 85px;
+
+}
+
+.btn {
+    background-color: #7395ae;
     border: 1px solid transparent;
-    padding: 15px;
+    border-radius: 10px;
+    padding: 2%;
+    box-shadow: 1px 2px 9px #93a5b1;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+}
+
+.btn:hover {
+    background-color: #5f85a1;
+    border: 1px solid transparent;
+    padding: 2%;
     cursor: pointer;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    text-align: center;
 }
