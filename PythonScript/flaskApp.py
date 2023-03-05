@@ -4,9 +4,7 @@ import numpy as np
 import requests
 from io import BytesIO
 import base64
-import json
 from flask_cors import CORS #comment this on deployment,
-
 
 app = Flask(__name__)
 CORS(app)
@@ -27,16 +25,8 @@ def getColorName():
   #get the middle pixel of the matrix
   middle_pixel = data[row,col]
 
-  #output the pixels
-  print("IMAGE PIXELS ARRAY HERE!\n")
-  print(image_pixels)
-  print("\n")
-  print("MIDDLE PIXEL HERE!!!\n")
-  print(middle_pixel)
-
   RGB = ",".join([str(value) for value in middle_pixel])
   r,g,b = middle_pixel
-  hexColor = '#{:02x}{:02x}{:02x}'.format(r, g, b)
   response = requests.get("https://www.thecolorapi.com/id", params = {"rgb": RGB})
   return (response.json()["name"]["value"])
 

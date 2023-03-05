@@ -19,19 +19,19 @@ const WebCamComponent = () => {
         if (imageTaken) {
             setPicture(imageTaken);
 
-            const base64EncodedImage = imageTaken.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+            const base64EncodedImage = imageTaken.replace(/^data:image\/(png|jpg|jpeg);base64,/, "").replaceAll("/", "-").replaceAll("+", "_");
             console.log(base64EncodedImage)
-            // try {
-            //     axios({
-            //         method: 'get',
-            //         url: "https://vgssadiquawneydqm5nvaejw4i0rfjio.lambda-url.us-east-1.on.aws/",
-            //     }).then(response => {
-            //         console.log(response.data);
-            //     });
+            try {
+                axios({
+                    method: 'get',
+                    url: "http://localhost:5000/colorName?image=" + base64EncodedImage,
+                }).then(response => {
+                    console.log(response.data);
+                });
                
-            // } catch (error) {
-            //     console.error(error);
-            // }
+            } catch (error) {
+                console.error(error);
+            }
         }
 
         
