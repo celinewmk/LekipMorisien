@@ -34,11 +34,8 @@
 }
 
 .webcam {
-    /* display: flex;
-    flex-direction: column; */
     margin-top: 85px;
     position: relative;
-
 }
 
 .btn {
@@ -72,8 +69,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 9%;
-    margin-left: 5px;
+    margin-top: 10%;
     background-color: #000000;
     opacity: 0.5;
     border: 1px solid #bdbdbd;
@@ -84,7 +80,6 @@
     padding-left: 5%;
     padding-right: 5%;
     text-align: center;
-
 }
 
 .modal-container {
@@ -98,4 +93,11 @@
     margin-left: 2%;
     padding: 10px;
     text-align: center;
+}
+
+.text-to-speech-icon {
+    cursor: pointer;
+    padding: 15px;
+    display: flex;
+    align-items: center
 }

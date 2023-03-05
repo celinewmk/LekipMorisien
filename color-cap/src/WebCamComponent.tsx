@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import "./styles.css";
 import { BsArrowRepeat, BsHouseDoorFill } from "react-icons/bs";
-import {AiFillInfoCircle} from "react-icons/ai"
+import { AiFillInfoCircle, AiFillSound } from "react-icons/ai"
 import axios from 'axios';
 
 const WebCamComponent = () => {
@@ -92,6 +92,7 @@ const WebCamComponent = () => {
                     <div className="result-container">
                         <p className="result-text">{exactColor}</p>
                         <p className="result-text">{closestColor}</p>
+                        <AiFillSound size={"30px"} className="text-to-speech-icon" color="white" />
                     </div>
                     {showModal && (
                         <div className="modal-container">
@@ -101,8 +102,8 @@ const WebCamComponent = () => {
                     
                     <img style={{marginTop: 10}} src={picture} alt="Screenshot" height={500} width={700} />
                     <div style={{ display: "flex", justifyContent: "center" }}>
-                        <BsHouseDoorFill onClick={goBackToHome} size={"30px"} style={{ cursor: "pointer", padding: 15}} />
-                        <BsArrowRepeat onClick={retry} size={"30px"} style={{ cursor: "pointer", padding: 15}} />
+                        <BsHouseDoorFill onClick={() => goBackToHome()} size={"30px"} style={{ cursor: "pointer", padding: 15}} />
+                        <BsArrowRepeat onClick={() => retry()} size={"30px"} style={{ cursor: "pointer", padding: 15}} />
                         <AiFillInfoCircle onClick={() => setShowModal(!showModal)} size={"30px"} style={{ cursor: "pointer", padding: 15}}/>
                     </div>
                 </div>
