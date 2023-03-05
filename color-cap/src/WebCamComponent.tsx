@@ -36,8 +36,9 @@ const WebCamComponent = () => {
                 { image: base64EncodedImage }, config).then(response => {
                     setExactColor(response.data[0]);
                     setClosestColor(response.data[1]);
+                    let utterance = new SpeechSynthesisUtterance(`${response.data[0]}. ${response.data[1]}`);
+                    speechSynthesis.speak(utterance);
                 });
-               
             } catch (error) {
                 console.error(error);
             }
