@@ -19,12 +19,15 @@ const WebCamComponent = () => {
             setPicture(imageTaken);
 
             const base64EncodedImage = imageTaken.replace(/^data:image\/(png|jpg|jpeg);base64,/, "").replaceAll("/", "-").replaceAll("+", "_");
-            console.log(base64EncodedImage)
             try {
-                axios({
-                    method: 'get',
-                    url: "http://localhost:5000/colorName?image=" + base64EncodedImage,
-                }).then(response => {
+                var config = {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
+                    }
+                }
+                axios.post("http://localhost:5000/colorName", 
+                { image: base64EncodedImage }, config).then(response => {
                     console.log(response.data);
                 });
                

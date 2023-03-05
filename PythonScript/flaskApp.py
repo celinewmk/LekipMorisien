@@ -9,9 +9,9 @@ from flask_cors import CORS #comment this on deployment,
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/colorName')
+@app.route('/colorName', methods=['POST'])
 def getColorName():
-  raw = request.args.get("image")
+  raw = request.json.get('image')
   base64_encoded_image = raw.replace("-","/").replace("_","+")
   im = Image.open(BytesIO(base64.b64decode(base64_encoded_image)))
 
@@ -64,7 +64,7 @@ def getColorName():
   message = "First closest color: "
   next_closest = message + str(list(color_dictionary.keys())[smallest_distance])
 
-  return (exact, next_closest)
+  return [exact, next_closest]
 
 if __name__ == '__main__':
   app.run()
