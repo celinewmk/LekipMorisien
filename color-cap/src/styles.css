@@ -80,6 +80,7 @@
     padding-left: 5%;
     padding-right: 5%;
     text-align: center;
+    font-size: 30px;
 }
 
 .modal-container {
@@ -93,6 +94,7 @@
     margin-left: 2%;
     padding: 10px;
     text-align: center;
+    font-size: 30px;
 }
 
 .text-to-speech-icon {
