@@ -7,7 +7,6 @@ import axios from 'axios';
 const WebCamComponent = () => {
 
     const launchLabel = "START!";
-    const exitLabel = "GO BACK TO HOME PAGE"
     const takePictureLabel = "CAPTURE"
 
     const [openCamera, setOpenCamera] = useState<boolean>(false);
@@ -60,12 +59,13 @@ const WebCamComponent = () => {
                             screenshotFormat="image/jpeg"
                             mirrored={true}
                         />
+                        <div className="overlay">
+                            <img alt="grid" src={require('./images/grid.png')} height={"90%"} width={"90%"} />
+                        </div>
                     </div>
-                    {/* <div className="overlay">
-                        <img alt="grid" src={require('./images/grid.png')} />
-                    </div> */}
-                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "row" }}>
                         <button className="btn" onClick={getScreenshotWebcam}>{takePictureLabel}</button>
+                        <BsHouseDoorFill onClick={goBackToHome} size={"30px"} style={{ cursor: "pointer", padding: 35}} />
                     </div>
                 </div>
                 
@@ -74,8 +74,8 @@ const WebCamComponent = () => {
                 <div style={{marginTop: "45px"}}>
                     <img style={{ padding: 10 }} src={picture} alt="Screenshot" height={500} width={700} />
                     <div style={{ display: "flex", justifyContent: "center" }}>
-                        <BsHouseDoorFill onClick={goBackToHome} size={"20px"} style={{ cursor: "pointer", padding: 15}} />
-                        <BsArrowRepeat onClick={() => { setPicture(null) }} size={"20px"} style={{ cursor: "pointer", padding: 15, fontSize: "15px" }} />
+                        <BsHouseDoorFill onClick={goBackToHome} size={"30px"} style={{ cursor: "pointer", padding: 15}} />
+                        <BsArrowRepeat onClick={() => { setPicture(null) }} size={"30px"} style={{ cursor: "pointer", padding: 15}} />
                     </div>
                 </div>
             )}
