@@ -1,11 +1,13 @@
 .header-container {
-    background-color: #557A95;
     text-align: center;
     padding-top: 1%;
     padding-bottom: 1%;
     font: 35px bold;
-    margin-bottom: 10px;
-    font-family: 'Courier New', Courier;
+    color: #EFF8E2;
+    font-family: Lato;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
@@ -24,6 +26,14 @@
 }
 
 .webcam-container {
+    display: "flex";
+    justify-content: "center";
+    align-items: "center";
+    flex-direction: "column";
+    margin-top: 35px;
+}
+
+.webcam {
     /* display: flex;
     flex-direction: column; */
     margin-top: 85px;
@@ -31,19 +41,18 @@
 }
 
 .btn {
-    background-color: #7395ae;
-    border: 1px solid transparent;
-    border-radius: 10px;
-    padding: 2%;
-    box-shadow: 1px 2px 9px #93a5b1;
-    font-family: 'Courier New', Courier, monospace;
+    background-color: #6F4E8F;
+    border: 10px solid #303657;
+    border-radius: 100px;
+    padding: 30px;
+    font-family: Lato;
     font-size: 25px;
 }
 
 .btn:hover {
-    background-color: #5f85a1;
-    border: 1px solid transparent;
-    padding: 2%;
+    background-color: #654288;
+    border: 10px solid #303657;
+    padding: 30px;
     cursor: pointer;
 }
 

@@ -1,12 +1,12 @@
 html, body {
   margin: 0;
-  font-family:'Courier New', Courier, monospace;
+  font-family:Lato;
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
-  background-color: #272727;
+  background-image: linear-gradient(#010934,#d873ae);
   height: 100%;
 }
 
 code {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Lato
 }

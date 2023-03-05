@@ -1,14 +1,14 @@
 import React, { useCallback, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import "./styles.css";
+import { BsArrowRepeat, BsHouseDoorFill } from "react-icons/bs";
 import axios from 'axios';
 
 const WebCamComponent = () => {
 
-    const launchLabel = "GET STARTED!";
-    const exitLabel = "GO BACK TO MAIN PAGE"
-    const takePictureLabel = "TAKE SCREENSHOT"
-    const deleteLabel = "DELETE"
+    const launchLabel = "START!";
+    const exitLabel = "GO BACK TO HOME PAGE"
+    const takePictureLabel = "CAPTURE"
 
     const [openCamera, setOpenCamera] = useState<boolean>(false);
     const webcamRef = useRef<Webcam>(null);
@@ -37,6 +37,11 @@ const WebCamComponent = () => {
         
     }, [webcamRef]);
 
+    const goBackToHome = () => {
+        setOpenCamera(false)
+        setPicture(null)
+    }
+
     return (
         <div className="container">
             {!openCamera && (
@@ -44,12 +49,12 @@ const WebCamComponent = () => {
                     <button className="btn" onClick={() => setOpenCamera(true)}>{launchLabel}</button>
                 </div>
             )}
-            {openCamera && (
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
-                    <div className="webcam-container">
+            {openCamera && picture === null && (
+                <div className="webcam-container">
+                    <div className="webcam">
                         <Webcam
                             audio={false}
-                            width={500}
+                            width={700}
                             height={500}
                             ref={webcamRef}
                             screenshotFormat="image/jpeg"
@@ -61,18 +66,16 @@ const WebCamComponent = () => {
                     </div> */}
                     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
                         <button className="btn" onClick={getScreenshotWebcam}>{takePictureLabel}</button>
-                        <button className="btn" style={{marginTop: 20}} onClick={() => setOpenCamera(false)}>{exitLabel}</button>   
                     </div>
                 </div>
                 
             )}
             {picture && (
-                <div style={{marginTop: 5}}>
-                    <img style={{padding: 10}} src={picture} alt="Screenshot" />
-                    <div>
-                        <button onClick={() => {setPicture(null)}}  className="btn">
-                            {deleteLabel}
-                        </button>
+                <div style={{marginTop: "45px"}}>
+                    <img style={{ padding: 10 }} src={picture} alt="Screenshot" height={500} width={700} />
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                        <BsHouseDoorFill onClick={goBackToHome} size={"20px"} style={{ cursor: "pointer", padding: 15}} />
+                        <BsArrowRepeat onClick={() => { setPicture(null) }} size={"20px"} style={{ cursor: "pointer", padding: 15, fontSize: "15px" }} />
                     </div>
                 </div>
             )}
