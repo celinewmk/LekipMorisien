@@ -40,17 +40,19 @@ def getColorName():
 	  "Brown": [139, 69, 19],
 	  "Yellow": [255, 242, 0],
 	  "Green": [34, 177, 76],
-	  "Blue": [203, 228, 253],
+	  "Sky blue": [203, 228, 253],
 	  "Dark blue": [0, 162, 232],
-	  "Purple": [63, 72, 204],
+    "Navy blue": [12, 7, 93],
+	  "Blue": [63, 72, 204],
 	  "White": [255, 255, 255],
 	  "Light gray": [195, 195, 195],
 	  "Light brown": [185, 122, 87],
 	  "Light pink": [255, 174, 201],
 	  "Dark yellow": [255, 201, 14],
-	  "Light yellow": [239, 228, 176],
+	  "Light yellow": [255, 255, 102],
 	  "Light green": [181, 230, 29],
-	  "Light blue": [153, 217, 234],
+    "Dark green": [0, 100, 0],
+	  "Turquoise blue": [153, 217, 234],
 	  "Dark blue": [112, 146, 190],
 	  "Light purple": [200, 191, 231],
 	}
@@ -61,7 +63,7 @@ def getColorName():
   index_of_smallest = np.where(distances==np.amin(distances)) # then we just take the min of that array 
   smallest_distance = index_of_smallest[0][0]
 	
-  message = "First closest color: "
+  message = "Closest color: "
   next_closest = message + str(list(color_dictionary.keys())[smallest_distance])
 
   return [exact, next_closest]

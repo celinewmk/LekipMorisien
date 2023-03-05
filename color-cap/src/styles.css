@@ -66,3 +66,36 @@
     color: #fff;
     text-align: center;
 }
+
+.result-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 9%;
+    margin-left: 5px;
+    background-color: #000000;
+    opacity: 0.5;
+    border: 1px solid #bdbdbd;
+}
+
+.result-text {
+    color: #ffffff;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+
+}
+
+.modal-container {
+    opacity: 0.8;
+    background-color: #a4a4a4;
+    border: 1px solid black;
+    position: absolute;
+    z-index: 2;
+    width: 40%;
+    display: flex;
+    margin-left: 2%;
+    padding: 10px;
+    text-align: center;
+}

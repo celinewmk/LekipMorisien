@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import "./styles.css";
 import { BsArrowRepeat, BsHouseDoorFill } from "react-icons/bs";
+import {AiFillInfoCircle} from "react-icons/ai"
 import axios from 'axios';
 
 const WebCamComponent = () => {
@@ -9,9 +10,14 @@ const WebCamComponent = () => {
     const launchLabel = "START!";
     const takePictureLabel = "CAPTURE"
 
+    const [exactColor, setExactColor] = useState<string | null>(null);
+    const [closestColor, setClosestColor] = useState<string | null>(null);
+
     const [openCamera, setOpenCamera] = useState<boolean>(false);
     const webcamRef = useRef<Webcam>(null);
     const [picture, setPicture] = useState<string | null>(null);
+
+    const [showModal, setShowModal] = useState<boolean>(false);
 
     const getScreenshotWebcam = useCallback(() => {
         const imageTaken = webcamRef.current?.getScreenshot();
@@ -28,7 +34,8 @@ const WebCamComponent = () => {
                 }
                 axios.post("http://localhost:5000/colorName", 
                 { image: base64EncodedImage }, config).then(response => {
-                    console.log(response.data);
+                    setExactColor(response.data[0]);
+                    setClosestColor(response.data[1]);
                 });
                
             } catch (error) {
@@ -42,6 +49,12 @@ const WebCamComponent = () => {
     const goBackToHome = () => {
         setOpenCamera(false)
         setPicture(null)
+        setShowModal(false)
+    }
+
+    const retry = () => {
+        setPicture(null)
+        setShowModal(false)
     }
 
     return (
@@ -74,11 +87,22 @@ const WebCamComponent = () => {
                 
             )}
             {picture && (
-                <div style={{marginTop: "45px"}}>
-                    <img style={{ padding: 10 }} src={picture} alt="Screenshot" height={500} width={700} />
+                <div style={{marginTop: "40px"}}>
+                    <div className="result-container">
+                        <p className="result-text">{exactColor}</p>
+                        <p className="result-text">{closestColor}</p>
+                    </div>
+                    {showModal && (
+                        <div className="modal-container">
+                            <p style={{textAlign: "center"}}>This is a detailed description of the exact color. </p>
+                        </div>
+                    )}
+                    
+                    <img style={{marginTop: 10}} src={picture} alt="Screenshot" height={500} width={700} />
                     <div style={{ display: "flex", justifyContent: "center" }}>
                         <BsHouseDoorFill onClick={goBackToHome} size={"30px"} style={{ cursor: "pointer", padding: 15}} />
-                        <BsArrowRepeat onClick={() => { setPicture(null) }} size={"30px"} style={{ cursor: "pointer", padding: 15}} />
+                        <BsArrowRepeat onClick={retry} size={"30px"} style={{ cursor: "pointer", padding: 15}} />
+                        <AiFillInfoCircle onClick={() => setShowModal(!showModal)} size={"30px"} style={{ cursor: "pointer", padding: 15}}/>
                     </div>
                 </div>
             )}
