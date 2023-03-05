@@ -36,8 +36,6 @@ const WebCamComponent = () => {
                 { image: base64EncodedImage }, config).then(response => {
                     setExactColor(response.data[0]);
                     setClosestColor(response.data[1]);
-                    let utterance = new SpeechSynthesisUtterance(`${response.data[0]}. ${response.data[1]}`);
-                    speechSynthesis.speak(utterance);
                 });
             } catch (error) {
                 console.error(error);
@@ -56,6 +54,11 @@ const WebCamComponent = () => {
     const retry = () => {
         setPicture(null)
         setShowModal(false)
+    }
+
+    const tts = () => {
+        let utterance = new SpeechSynthesisUtterance(`${exactColor}. ${closestColor}`);
+        speechSynthesis.speak(utterance);
     }
 
     return (
@@ -92,7 +95,7 @@ const WebCamComponent = () => {
                     <div className="result-container">
                         <p className="result-text">{exactColor}</p>
                         <p className="result-text">{closestColor}</p>
-                        <AiFillSound size={"30px"} className="text-to-speech-icon" color="white" />
+                        <AiFillSound onClick={() => tts()} size={"30px"} className="text-to-speech-icon" color="white" />
                     </div>
                     {showModal && (
                         <div className="modal-container">
