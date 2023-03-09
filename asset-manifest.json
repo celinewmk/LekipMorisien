@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/LekipMorisien/static/css/main.c919b24d.css",
+    "main.js": "/LekipMorisien/static/js/main.9f931862.js",
+    "static/media/lato-all-400-normal.woff": "/LekipMorisien/static/media/lato-all-400-normal.3dc1eff492ab1f598560.woff",
+    "static/media/lato-latin-400-normal.woff2": "/LekipMorisien/static/media/lato-latin-400-normal.be36596da218e1eec01c.woff2",
+    "static/media/grid.png": "/LekipMorisien/static/media/grid.5b1f391fce68eaf6b9ed.png",
+    "static/media/lato-latin-ext-400-normal.woff2": "/LekipMorisien/static/media/lato-latin-ext-400-normal.361f3dbb9db6a5980326.woff2",
+    "index.html": "/LekipMorisien/index.html",
+    "main.c919b24d.css.map": "/LekipMorisien/static/css/main.c919b24d.css.map",
+    "main.9f931862.js.map": "/LekipMorisien/static/js/main.9f931862.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c919b24d.css",
+    "static/js/main.9f931862.js"
+  ]
+}
