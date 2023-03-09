@@ -24,7 +24,7 @@ const WebCamComponent = () => {
         if (imageTaken) {
             setPicture(imageTaken);
 
-            const base64EncodedImage = imageTaken.replace(/^data:image\/(png|jpg|jpeg);base64,/, "").replaceAll("/", "-").replaceAll("+", "_");
+            const base64EncodedImage = imageTaken.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
             const url = "https://n2c5bmex9j.execute-api.us-east-1.amazonaws.com/HackTheHill";
             const body = { image: base64EncodedImage };
 
